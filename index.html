@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo IMC</title>
+    <script src="./index.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Calcule seu IMC (Indice de massa corporal)</h1>
+    </header>
+    <section>
+        <form>
+            <div class="name">
+                <label for="nome">Informe seu Nome: </label>
+                <input type="text" name="nome" id="nome" required>
+            </div>
+            <div class="altura">
+                <label for="altura">Informe sua Altura: </label>
+                <input type="text" name="altura" id="altura" required>
+            </div>
+            <div class="peso">
+                <label for="peso">Informe seu Peso: </label>
+                <input type="text" name="peso" id="peso" required>
+            </div>
+            <button class="calcular">Calcular</button>
+        </form>
+        <div class="result">
+            <h3>Resultado</h3>
+            <input type="text" disabled>
+        </div>
+    </section>
+</body>
+</html>
