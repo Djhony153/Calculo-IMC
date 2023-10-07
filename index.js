@@ -3,9 +3,6 @@ const pessoas = []
 function calc(p,a) {
     let resultado = ""
     calculoImc = p / (a * a)
-
-    console.log(p,a)
-    console.log(calculoImc)
     
     if (calculoImc < 18.5) {
         resultado = "Abaixo do Peso!"
@@ -24,27 +21,41 @@ function calc(p,a) {
     return resultado
 };
 
+function escreverPessoa() {
+
+    const resultado = document.querySelector('.result')
+    const ul = document.createElement('ul')
+    ul.className = "paciente"
+    const liName = document.createElement('li')
+    const liAltura = document.createElement('li')
+    const liPeso = document.createElement('li')
+    const liImc = document.createElement('li')
+
+    for (let i = 0; i < pessoas.length; i++) {
+        liName.innerText = "Nome: " + pessoas[i].nomePaciente
+        liAltura.innerText = "Altura: " + pessoas[i].alturaPessoa + " m"
+        liPeso.innerText = "Peso: " + pessoas[i].pesoPessoa + " Kg"
+        liImc.innerText = "IMC: " + pessoas[i].calculoImc.toFixed(2) + " > " + pessoas[i].imc
+    }
+
+    ul.append(liName, liAltura, liPeso, liImc)
+
+    resultado.append(ul)
+}
+
 document.querySelector('.calcular').addEventListener("click", function (ev){
     ev.preventDefault()
 
-    const resultado = document.querySelector('.result input')
+
     const nomePaciente = document.getElementById('nome').value
     const pesoPessoa = document.getElementById('peso').value
     const alturaPessoa = document.getElementById('altura').value
 
-    let imc = calc(
-        parseFloat(pesoPessoa),
-        parseFloat(alturaPessoa)
-    );
+    let imc = calc(parseFloat(pesoPessoa), parseFloat(alturaPessoa))
 
-    resultado.value = calc(
-        parseFloat(pesoPessoa),
-        parseFloat(alturaPessoa)
-    );
-
-    pessoas.push({nomePaciente, alturaPessoa, pesoPessoa, imc})
+    let calculoImc = pesoPessoa / (alturaPessoa * alturaPessoa)
     
+    pessoas.push({nomePaciente, alturaPessoa, pesoPessoa, calculoImc ,imc})
+    
+    escreverPessoa()
 });
-
-
-
